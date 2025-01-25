@@ -22,12 +22,14 @@ vim.cmd("set spell")
 
 -- Commands
 vim.cmd("command! CloseBuffers %bd|e#|bd#")
+-- Copy current line reference
+vim.cmd("command! CopyPath exec '! echo '.expand('%').':'.line('.').' | clip.exe'")
 
 -- Autocommands
 vim.cmd("autocmd! VimLeave * mks!")
 local timer = vim.loop.new_timer()
 local function save_session()
-    vim.cmd('mks!')
+  vim.cmd('mks!')
 end
 timer:start(60000, 60000, vim.schedule_wrap(save_session))
 
@@ -53,6 +55,7 @@ vim.keymap.set('n', '<leader>x', ':bn<CR>')
 vim.keymap.set('n', '<leader>c', ':bd<CR>')
 vim.keymap.set('n', '<TAB>', '<C-^>')
 vim.keymap.set('n', '<leader>/', 'gcc')
+vim.keymap.set('n', '<leader>tl', ':CopyPath<CR>')
 
 -- visual mode remaps
 vim.keymap.set('v', '<C-c>', ':\'<,\'> w !clip.exe<CR><CR>')
