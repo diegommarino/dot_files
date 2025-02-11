@@ -1,2 +1,2 @@
-eval "$(oh-my-posh init zsh --config ~/.poshthemes/tonybaloney.omp.json)"
+eval "$(oh-my-posh init zsh --config ~/.sharedcfg/.poshthemes/custom_tonybaloney.omp.json)"
 alias poshatomic='eval "$(oh-my-posh init zsh --config ~/.poshthemes/atomic.omp.json)"'

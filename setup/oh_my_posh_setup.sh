@@ -16,9 +16,14 @@ else
   ln -s ./poshthemes ~/.poshthemes
 fi
 
-echo "Linking .shared_config/.shared_zshrc"
+echo "Linking .sharedcfg/.shared_zshrc"
 # Check if .shared_zshrc line exists in .zshrc
-LINE="source ~/.shared_config/.shared_zshrc"
+LINE="source ~/.sharedcfg/.shared_zshrc"
 grep -qxF "$LINE" ~/.zshrc || echo $LINE >> ~/.zshrc
+
+echo "Adding '$'HOME/.local/bin"
+# Check if .shared_zshrc line exists in .zshrc
+LINE="export PATH=$HOME/.local/bin:$PATH\n"
+grep -qxF "$LINE" ~/.zshrc || sed -i "1s/^/$LINE/" ~/.zshrc
 
 zsh
