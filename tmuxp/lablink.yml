@@ -1,0 +1,34 @@
+session_name: lablinkv3
+start_directory: ~/docker/lablink
+windows:
+  - window_name: main
+    focus: true
+    panes:
+      - shell_command: 
+          - nvim
+      - shell_command:
+          - tmux resize-pane -y 9
+          - clear
+          - tmux select-pane -t 1
+  - window_name: lazygit
+    panes:
+      - shell_command: 
+          - lazygit
+  - window_name: localhost_sidekiq
+    panes:
+      - shell_command: 
+          - rvm use
+          - bundle exec rails s
+      - shell_command: 
+          - rvm use
+          - bundle exec sidekiq
+  - window_name: sidework
+    panes:
+      - shell_command: 
+          - cd ../lablink-sidework
+          - nvim
+  - window_name: gat
+    panes:
+      - shell_command: 
+          - cd ~/dev/gatekeeper_new
+          - nvim
